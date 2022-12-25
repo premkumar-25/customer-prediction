@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codegnan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+    <style>
+        .heading{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+            color: pink;
+        }
+        body{
+            /* background-image: url({{ url_for('static', filename='img/home.jpg') }}); */
+            background-image: linear-gradient(rgba(4,9,30,0.65),rgba(4,9,30,0.65)),url(https://pestleanalysis.com/wp-content/uploads/2020/04/What-is-Customer-Segmentation-Analysis-and-Models.jpg) ;         
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        input[type=radio]{
+            accent-color:red;
+        }
+        input{
+            margin-left: 40%;
+        }
+        p{
+            font-size: 20px;
+            color:whitesmoke;
+            margin-left: 40%;
+        }
+        label{
+            color:white;
+        }
+        button{
+            padding: 15px;
+            font-family:'Times New Roman','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border: cyan double 3px;
+            font-size: 17px;
+            color:white;
+            background-color: transparent;
+            margin-left: 39%;
+        }
+        button:hover{
+            transition: 0.5s;
+            color:cyan;
+            border:cyan double 3px;
+            margin-left: 38.5%;
+        }
+        h3{
+            padding-top: 20px;
+            margin-left: 39%;
+            padding-bottom: 20px;
+            color: cyan;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{ url_for('predict')}}" method="post">
+    <h1 class="heading">Customer Segmentation Web App</h1>
+    <p>Type in the Houshold Income</p>
+    <input type="number" name="Income" placeholder="Enter Income" required>
+    <p>Select Number of Kids</p>
+    <input type="radio" id="kid1" name="Kidhome" value="0" required>
+    <label for="kid1">0</label><br>
+    <input type="radio" id="kid2" name="Kidhome" value="1" required>
+    <label for="kid2">1</label><br>
+    <input type="radio" id="kid3" name="Kidhome" value="2" required>
+    <label for="kid3">2</label><br>
+
+
+    <p>Select Number of Teens</p>
+    <input type="radio" id="teen1" name="Teenhome" value="0" required>
+    <label for="teen1">0</label><br>
+    <input type="radio" id="teen2" name="Teenhome" value="1" required>
+    <label for="teen2">1</label><br>
+    <input type="radio" id="teen3" name="Teenhome" value="2" required>
+    <label for="teen3">2</label><br>
+
+    <p>Enter Age</p>
+    <input type="number" id="age" name="Age" placeholder="Enter Age" required>
+
+    <p>Living with Partner?</p>
+    <input type="radio" id="yeah" name="Partner" value="Yes" required>
+    <label for="yeah">Yes</label><br>
+    <input type="radio" id="nah" name="Partner" value="No" required>
+    <label for="nah">No</label><br>
+
+    <p>Select Education</p>
+    <input type="radio" id="ug" name="Education_Level" value="Undergraduate" required>
+    <label for="ug">Undergraduate</label><br>
+    <input type="radio" id="g" name="Education_Level" value="Graduate" required>
+    <label for="g">Graduate</label><br>
+    <input type="radio" id="pg" name="Education_Level" value="Postgraduate" required>
+    <label for="pg">Postgraduate</label><br>
+    <br><br>
+    <button type="submit"> Segment Customer</button>
+</form>
+    <br>
+    <h3 name="result" >{{prediction_text }}</h3>
+
+</body>
+</html>
